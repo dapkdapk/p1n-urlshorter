@@ -12,7 +12,7 @@ require_once "lib/p1n.php";
 $title = strtoupper ( $_SERVER ["HTTP_HOST"] );
 $relBootStrapPath = "vendor/twbs/bootstrap/dist/";
 $relJQueryPath = "vendor/components/jquery/";
-$relKnockoutPath = "vendor/itguy614/knockout/js/";
+$relKnockoutPath = "3rd/js/";
 $relP1NPath = "lib/";
 $rel3rdPath = "3rd/";
 ?>
