@@ -1,46 +1,48 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-/**
- * dapkdapk
- */
-require_once "3rd/lib/serversalt.php";
-require_once "3rd/lib/functions.zerobin.php";
-require_once "cfg/config.inc.php";
-require_once "lib/p1n.php";
+/** dapkdapk */
+require_once '3rd/lib/serversalt.php';
+require_once '3rd/lib/functions.zerobin.php';
+require_once 'cfg/config.inc.php';
+require_once 'lib/p1n.php';
 
-$title = strtoupper ( $_SERVER ["HTTP_HOST"] );
-$relBootStrapPath = "vendor/twbs/bootstrap/dist/";
-$relJQueryPath = "vendor/components/jquery/";
-$relKnockoutPath = "3rd/js/";
-$relP1NPath = "lib/";
-$rel3rdPath = "3rd/";
+$title = strtoupper($_SERVER['HTTP_HOST']);
+$relBootStrapPath = 'vendor/twbs/bootstrap/dist/';
+$relJQueryPath = 'vendor/components/jquery/';
+$relKnockoutPath = '3rd/js/';
+$relP1NPath = 'lib/';
+$rel3rdPath = '3rd/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?=$title?> URL</title>
+<title><?= $title ?> URL</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- JQuery -->
-<script src="<?=$relJQueryPath?>jquery.min.js"></script>
+<script src="<?= $relJQueryPath ?>jquery.min.js"></script>
 <!-- Bootstrap -->
-<link href="<?=$relBootStrapPath?>css/bootstrap.min.css"
+<link href="<?= $relBootStrapPath ?>css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Knockout -->
-<script src="<?=$relKnockoutPath?>knockout.js"></script>
+<script src="<?= $relKnockoutPath ?>knockout.js"></script>
 <!-- 3rd -->
-<script src="<?=$rel3rdPath?>js/sjcl.js"></script>
-<script src="<?=$rel3rdPath?>js/functions.zerobin.js"></script>
-<script src="<?=$rel3rdPath?>js/base64.js"></script>
-<script src="<?=$rel3rdPath?>js/rawdeflate.js"></script>
-<script src="<?=$rel3rdPath?>js/rawinflate.js"></script>
+<script src="<?= $rel3rdPath ?>js/sjcl.js"></script>
+<script src="<?= $rel3rdPath ?>js/functions.zerobin.js"></script>
+<script src="<?= $rel3rdPath ?>js/base64.js"></script>
+<script src="<?= $rel3rdPath ?>js/rawdeflate.js"></script>
+<script src="<?= $rel3rdPath ?>js/rawinflate.js"></script>
+
+<!-- https://stackoverflow.com/questions/67403923/how-do-i-generate-qr-code-from-url-in-javascript -->
+<script src="<?= $rel3rdPath ?>js/qrcode.min.js"></script>
+<script src="<?= $rel3rdPath ?>js/07afc061fe.js" crossorigin="anonymous"></script>
 
 <!-- css -->
-<link type="text/css" rel="stylesheet" href="<?=$relP1NPath?>p1n.css" />
+<link type="text/css" rel="stylesheet" href="<?= $relP1NPath ?>p1n.css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,7 +66,7 @@ $rel3rdPath = "3rd/";
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="javascript:window.location=scriptLocation();"><?=$title?> URL</a>
+					href="javascript:window.location=scriptLocation();"><?= $title ?> URL</a>
 			</div>
 
 		</div>
@@ -79,8 +81,17 @@ $rel3rdPath = "3rd/";
 
 		<div data-bind="visible: showNewUrl" class="alert alert-success"
 			role="alert">
+
+			<div align="right">
+				<a data-bind="attr: {href: deleteUrl}" target="_self"> <span
+					class="glyphicon glyphicon-trash"></span>
+				</a>
+			</div>
+
+
 			<!-- <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> -->
 			<h4>Encrypted:</h4>
+
 			<a data-bind="attr: {href: urlString}" target="_blank"> <span
 				data-bind="text: urlString" style="font-weight: bold;"></span>
 			</a> <br />
@@ -99,10 +110,13 @@ $rel3rdPath = "3rd/";
 			</a>
 			</span>
 
-			<div align="right">
-				<a data-bind="attr: {href: deleteUrl}" target="_self"> <span
-					class="glyphicon glyphicon-trash"></span>
-				</a>
+
+			<div data-bind="visible: qrCodeSpan" style="background-color:#fff;">
+				<div id="qrcode">
+					<button class="qr-action" data-qr-action="download"></button>
+					<button class="qr-action" data-qr-action="copy"></button>
+					<a class="qr-action" data-qr-action="visit" target="_blank" title="Visit QR Source"></a>
+				</div>
 			</div>
 		</div>
 
@@ -144,19 +158,19 @@ $rel3rdPath = "3rd/";
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<iframe
-						src="<?=(@$_SERVER ['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], "ssl") != "") ? "https" : "http")?>://ourdisclaimer.com/?i=<?=$title?>"
+						src="<?= (@$_SERVER['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], 'ssl') != '') ? 'https' : 'http') ?>://ourdisclaimer.com/?i=<?= $title ?>"
 						width="100%" height="600"></iframe>
 				</div>
 			</div>
 		</div>
 
 	</div>
-	<div id="cipherdata" style="display: none;"><?=$CIPHERDATA?></div>
-	<div id="errormessage" style="display: none;"><?=$ERRORMESSAGE?></div>
-	<div id="statusmessage" style="display: none;"><?=$STATUS?></div>
+	<div id="cipherdata" style="display: none;"><?= $CIPHERDATA ?></div>
+	<div id="errormessage" style="display: none;"><?= $ERRORMESSAGE ?></div>
+	<div id="statusmessage" style="display: none;"><?= $STATUS ?></div>
 
 	<!-- p1n -->
-	<script src="<?=$relP1NPath?>p1n.js"></script>
-	<script src="<?=$relBootStrapPath?>js/bootstrap.min.js"></script>
+	<script src="<?= $relP1NPath ?>p1n.js"></script>
+	<script src="<?= $relBootStrapPath ?>js/bootstrap.min.js"></script>
 </body>
 </html>
