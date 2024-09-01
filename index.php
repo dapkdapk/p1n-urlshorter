@@ -107,12 +107,19 @@ $rel3rdPath = '3rd/';
 			</button>
 
 			<span data-bind="visible: shortUrlSpan">
-				<h4>Shorturl:</h4> <a data-bind="attr: {href: shortUrlString}"
-				target="_blank"> <span data-bind="text: shortUrlString"
-					style="font-weight: bold;"></span>
-			</a>
+				<h4>Shorturl:</h4> 
+				<a data-bind="attr: {href: shortUrlString}" target="_blank">
+					<span data-bind="text: shortUrlString" style="font-weight: bold;"></span>
+				</a>
 			</span>
+			<br />
+			<br />
 
+			<button data-bind="visible: qrButton, click: getQRCode"
+					type="button" class="btn btn-primary btn-xs">
+					<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					GET QCR CODE
+			</button>
 
 			<div data-bind="visible: qrCodeSpan" style="background-color:#fff;">
 				<div id="qrcode">
