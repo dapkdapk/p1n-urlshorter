@@ -87,7 +87,7 @@
     left: 0;
     top: 0;
     border-radius: 50%;
-    font-family: "Font Awesome 5 Pro";
+    font-family: "Font Awesome 6 Free";
     font-weight: 900;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -108,7 +108,7 @@
 }
 #qrcode .qr-action[data-qr-action="download"]::before,
 #qrcode .qr-action[data-qr-action="download"]::after {
-    content: "\f381";
+    content: "\f0ab";
 }
 #qrcode .qr-action[data-qr-action="copy"]::before,
 #qrcode .qr-action[data-qr-action="copy"]::after {

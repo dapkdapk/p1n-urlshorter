@@ -17,7 +17,7 @@ $rel3rdPath = '3rd/';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?= $title ?> URL</title>
+<title><?php echo $title; ?> URL</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,25 +27,25 @@ $rel3rdPath = '3rd/';
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- JQuery -->
-<script src="<?= $relJQueryPath ?>jquery.min.js"></script>
+<script src="<?php echo $relJQueryPath; ?>jquery.min.js"></script>
 <!-- Bootstrap -->
-<link href="<?= $relBootStrapPath ?>css/bootstrap.min.css"
+<link href="<?php echo $relBootStrapPath; ?>css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Knockout -->
-<script src="<?= $relKnockoutPath ?>knockout.js"></script>
+<script src="<?php echo $relKnockoutPath; ?>knockout.js"></script>
 <!-- 3rd -->
-<script src="<?= $rel3rdPath ?>js/sjcl.js"></script>
-<script src="<?= $rel3rdPath ?>js/functions.zerobin.js"></script>
-<script src="<?= $rel3rdPath ?>js/base64.js"></script>
-<script src="<?= $rel3rdPath ?>js/rawdeflate.js"></script>
-<script src="<?= $rel3rdPath ?>js/rawinflate.js"></script>
+<script src="<?php echo $rel3rdPath; ?>js/sjcl.js"></script>
+<script src="<?php echo $rel3rdPath; ?>js/functions.zerobin.js"></script>
+<script src="<?php echo $rel3rdPath; ?>js/base64.js"></script>
+<script src="<?php echo $rel3rdPath; ?>js/rawdeflate.js"></script>
+<script src="<?php echo $rel3rdPath; ?>js/rawinflate.js"></script>
 
 <!-- https://stackoverflow.com/questions/67403923/how-do-i-generate-qr-code-from-url-in-javascript -->
-<script src="<?= $rel3rdPath ?>js/qrcode.min.js"></script>
-<script src="<?= $rel3rdPath ?>js/07afc061fe.js" crossorigin="anonymous"></script>
+<script src="<?php echo $rel3rdPath; ?>js/qrcode.min.js"></script>
+<script src="https://kit.fontawesome.com/dc2ea49367.js" crossorigin="anonymous"></script>
 
 <!-- css -->
-<link type="text/css" rel="stylesheet" href="<?= $relP1NPath ?>p1n.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo $relP1NPath; ?>p1n.css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
