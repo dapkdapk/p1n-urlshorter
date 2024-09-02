@@ -42,7 +42,7 @@ $rel3rdPath = '3rd/';
 
 <!-- https://stackoverflow.com/questions/67403923/how-do-i-generate-qr-code-from-url-in-javascript -->
 <script src="<?php echo $rel3rdPath; ?>js/qrcode.min.js"></script>
-<script src="https://kit.fontawesome.com/dc2ea49367.js" crossorigin="anonymous"></script>
+<script src="<?php echo $rel3rdPath; ?>js/dc2ea49367.js" crossorigin="anonymous"></script>
 
 <!-- css -->
 <link type="text/css" rel="stylesheet" href="<?php echo $relP1NPath; ?>p1n.css" />
