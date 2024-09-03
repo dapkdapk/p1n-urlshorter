@@ -116,7 +116,7 @@
 }
 #qrcode .qr-action[data-qr-action="visit"]::before,
 #qrcode .qr-action[data-qr-action="visit"]::after {
-    content: "\f0c1";
+    content: "\f08e";
 }
 #qrcode .qr-action:nth-child(1) {
     transform: translate(-175%, -50%) scale(0);
