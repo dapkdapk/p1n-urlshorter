@@ -72,7 +72,7 @@ $rel3rdPath = '3rd/';
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="javascript:window.location=scriptLocation();"><span class="passion-one-bold"><?= $title ?> SHORT-URL</span></a>
+					href="javascript:window.location=scriptLocation();"><span class="passion-one-bold"><?= $title ?></span></a>
 			</div>
 
 		</div>
