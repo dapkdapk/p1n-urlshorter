@@ -53,6 +53,9 @@ $rel3rdPath = '3rd/';
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Comfortaa:wght@300..700&display=swap');
+	</style>
 </head>
 <body>
 
@@ -69,7 +72,7 @@ $rel3rdPath = '3rd/';
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="javascript:window.location=scriptLocation();"><?= $title ?> URL</a>
+					href="javascript:window.location=scriptLocation();"><span class="passion-one-bold"><?= $title ?> SHORT-URL</span></a>
 			</div>
 
 		</div>
@@ -168,7 +171,7 @@ $rel3rdPath = '3rd/';
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<iframe
-						src="<?= (@$_SERVER['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], 'ssl') != '') ? 'https' : 'http') ?>://ourdisclaimer.com/?i=<?= $title ?>"
+						src="<?php echo (@$_SERVER['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], 'ssl') != '') ? 'https' : 'http'); ?>://ourdisclaimer.com/?i=<?= $title ?>"
 						width="100%" height="600"></iframe>
 				</div>
 			</div>
