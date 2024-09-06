@@ -68,6 +68,7 @@ if (
 	stripslashes_deep($_COOKIE);
 }
 
+
 if (!empty($_POST['shorturl'])) {
 	header('Content-type: application/json');
 

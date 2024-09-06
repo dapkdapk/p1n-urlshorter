@@ -40,9 +40,8 @@ $rel3rdPath = '3rd/';
 <script src="<?php echo $rel3rdPath; ?>js/rawdeflate.js"></script>
 <script src="<?php echo $rel3rdPath; ?>js/rawinflate.js"></script>
 
-<!-- https://stackoverflow.com/questions/67403923/how-do-i-generate-qr-code-from-url-in-javascript -->
-<script src="<?php echo $rel3rdPath; ?>js/qrcode.min.js"></script>
-<script src="<?php echo $rel3rdPath; ?>js/dc2ea49367.js" crossorigin="anonymous"></script>
+<!-- https://www.npmjs.com/package/qr-code-styling -->
+<script src="<?php echo $rel3rdPath; ?>js/qr-code-styling.js"></script>
 
 <!-- css -->
 <link type="text/css" rel="stylesheet" href="<?php echo $relP1NPath; ?>p1n.css" />
@@ -100,7 +99,11 @@ $rel3rdPath = '3rd/';
 
 			<a data-bind="attr: {href: urlString}" target="_blank"> <span
 				data-bind="text: urlString" style="font-weight: bold;"></span>
-			</a> <br />
+			</a>&nbsp;
+			<button data-bind="visible: copyUrlStringButton, click: clickCopyUrl" type="button" class="btn btn-primary btn-xs">
+				<span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+			</button>
+			<br />
 			<br />
 
 			<button data-bind="visible: shortUrlButton, click: getShortUrl"
@@ -113,7 +116,10 @@ $rel3rdPath = '3rd/';
 				<h4>Shorturl:</h4> 
 				<a data-bind="attr: {href: shortUrlString}" target="_blank">
 					<span data-bind="text: shortUrlString" style="font-weight: bold;"></span>
-				</a>
+				</a>&nbsp;
+				<button data-bind="visible: copyShortUrlStringButton, click: clickCopyShortUrl" type="button" class="btn btn-primary btn-xs">
+					<span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+				</button>
 			</span>
 			<br />
 			<br />
@@ -124,13 +130,24 @@ $rel3rdPath = '3rd/';
 					GET QCR CODE
 			</button>
 
-			<div data-bind="visible: qrCodeSpan" style="background-color:#fff;">
-				<div id="qrcode">
-					<button class="qr-action" data-qr-action="download"></button>
-					<button class="qr-action" data-qr-action="copy"></button>
-					<a class="qr-action" data-qr-action="visit" target="_blank" title="Visit QR Source"></a>
-				</div>
+			<div data-bind="visible: qrNewCodeSpan">
+				<h4>QR-Code:</h4> 
+				<div style="width: 320px; height: 320px; border: 10px solid #fff;">
+					<div id="qrcodenew"></div>
+				</div><br />
+				<button data-bind="click: clickDownloadShortUrl" type="button" class="btn btn-primary">
+					<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+				</button>
+				&nbsp;
+				<button data-bind="click: clickCopyShortUrl" type="button" class="btn btn-primary">
+					<span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+				</button>
+				&nbsp;
+				<button data-bind="click: clickOpenShortUrl" type="button" class="btn btn-primary">
+					<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+				</button>
 			</div>
+
 		</div>
 
 		<div data-bind="visible: errorBox" class="alert alert-danger"
