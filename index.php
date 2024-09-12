@@ -61,19 +61,9 @@ $rel3rdPath = '3rd/';
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand"
-					href="javascript:window.location=scriptLocation();"><span class="passion-one-bold"><?= $title ?></span></a>
+				<a class="navbar-brand" href="javascript:window.location=scriptLocation();"><span class="passion-one-bold"><?= $title ?></span></a>
 			</div>
-
 		</div>
 	</nav>
 
@@ -96,13 +86,14 @@ $rel3rdPath = '3rd/';
 
 			<!-- <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> -->
 			<h4>Encrypted:</h4>
-
-			<a data-bind="attr: {href: urlString}" target="_blank"> <span
-				data-bind="text: urlString" style="font-weight: bold;"></span>
-			</a>&nbsp;
-			<button data-bind="visible: copyUrlStringButton, click: clickCopyUrl" type="button" class="btn btn-primary btn-xs">
-				<span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
-			</button>
+			<div class="urlbox">
+				<a data-bind="attr: {href: urlString}" target="_blank">
+					<span data-bind="text: urlString" style="font-weight: bold;"></span>
+				</a>&nbsp;
+				<button data-bind="visible: copyUrlStringButton, click: clickCopyUrl" type="button" class="btn btn-primary btn-xs">
+					<span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+				</button>
+			</div>
 			<br />
 			<br />
 
@@ -132,9 +123,8 @@ $rel3rdPath = '3rd/';
 
 			<div data-bind="visible: qrNewCodeSpan">
 				<h4>QR-Code:</h4> 
-				<div style="width: 320px; height: 320px; border: 10px solid #fff;">
-					<div id="qrcodenew"></div>
-				</div><br />
+				<div id="qrcodenew"></div>
+				<br />
 				<button data-bind="click: clickDownloadShortUrl" type="button" class="btn btn-primary">
 					<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
 				</button>
@@ -156,11 +146,13 @@ $rel3rdPath = '3rd/';
 			<span class="sr-only">Error:</span> <span data-bind="text: errorText"></span>
 		</div>
 
-		<div data-bind="visible: statusBox" class="alert alert-info"
-			role="alert">
-			<span data-bind="visible: infoTextSpin"
-				class="glyphicon glyphicon-refresh glyphicon-spin"
-				aria-hidden="true"></span> <span data-bind="text: infoText"></span>
+		<div class="urlbox">
+			<div data-bind="visible: statusBox" class="alert alert-info"
+				role="alert">
+				<span data-bind="visible: infoTextSpin"
+					class="glyphicon glyphicon-refresh glyphicon-spin"
+					aria-hidden="true"></span> <span data-bind="text: infoText"></span>
+			</div>
 		</div>
 
 		<form class="form" data-bind="visible: showForm">

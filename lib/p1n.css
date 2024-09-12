@@ -49,3 +49,6 @@ body{
         transform: rotate(359deg);
     }
 }
+.urlbox {
+    word-break: break-all;
+}
