@@ -178,10 +178,10 @@ $rel3rdPath = '3rd/';
 		<div class="modal fade bs-example-modal-lg" tabindex="-1"
 			role="dialog" aria-labelledby="myLargeModalLabel">
 			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<iframe
-						src="<?php echo (@$_SERVER['HTTPS'] || (strpos(@$_SERVER['HTTP_VIA'], 'ssl') != '') ? 'https' : 'http'); ?>://ourdisclaimer.com/?i=<?= $title ?>"
-						width="100%" height="600"></iframe>
+				<div class="modal-content" style="background-color:#333;">
+				<iframe
+						src="disclaimer.php?host=<?= $title ?>"
+						width="100%" height="650"></iframe>
 				</div>
 			</div>
 		</div>
