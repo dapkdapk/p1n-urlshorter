@@ -1,5 +1,6 @@
 <?php
 $host = isset($_GET['host']) ? $_GET['host'] : 'thiswebsite';
+$relBootStrapPath = 'vendor/twbs/bootstrap/dist/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@ $host = isset($_GET['host']) ? $_GET['host'] : 'thiswebsite';
 <link href="<?php echo $relBootStrapPath; ?>css/bootstrap.min.css"
 	rel="stylesheet">
 </head>
-    <body style="font-family: Verdana, Helvetica;background-color:#333;color:#efefef;">
+    <body style="font-family: Verdana, Helvetica;background-color:#333;color:#efefef;padding: 20px;">
     <h3>Disclaimer for <?php echo $host; ?></h3>
 <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at info@<?php echo strtolower($host); ?>.</p>
 

@@ -181,7 +181,7 @@ $rel3rdPath = '3rd/';
 				<div class="modal-content" style="background-color:#333;">
 				<iframe
 						src="disclaimer.php?host=<?= $title ?>"
-						width="100%" height="650"></iframe>
+						width="90%" height="450"></iframe>
 				</div>
 			</div>
 		</div>
