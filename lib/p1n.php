@@ -68,6 +68,35 @@ if (
 	stripslashes_deep($_COOKIE);
 }
 
+function _check_api_key($apikey)
+{
+	return in_array($apikey, API_KEYS);
+}
+
+function _check_is_valid_url($url) {
+    $path = parse_url($url, PHP_URL_PATH);
+    $encoded_path = array_map('urlencode', explode('/', $path));
+    $url = str_replace($path, implode('/', $encoded_path), $url);
+    return filter_var($url, FILTER_VALIDATE_URL) ? true : false;
+}
+
+function _generate_shorturl($url){
+	return "";
+}
+
+if (isset($_POST['apikey']) && isset($_POST['url']) && !empty($_POST['apikey'] && !empty($_POST['url']))) {
+	$input_api_key = $_POST['apikey'];
+	$input_url = $_POST['url'];
+	header('Content-type: application/json');
+	if (_check_api_key($input_api_key) && _check_is_valid_url($input_url)){
+		$shorturl = _generate_shorturl($input_url);
+		print_r('{"status": "success", "message":"Shorturl has been created sucessfully","shorturl":"'.$shorturl.'", "url":"'.$input_url.'"}');
+	} else {
+		print_r('{"status": "error", "message":"API key or url inout is invalid","shorturl":None, "url":"'.$input_url.'"}');
+	}
+	print_r(PHP_EOL);
+	exit;
+}
 
 if (!empty($_POST['shorturl'])) {
 	header('Content-type: application/json');
